@@ -85,6 +85,10 @@ window.onload = function () {
         // TODO: 写地鼠随机选择钻出地洞的逻辑，如果与上一个是相同地洞，则重新选择一个地洞.
 		var random = Math.floor(Math.random()*6);
 		var hole = holes[random];
+		if(random == lastHole) {
+			hole = randomHole();
+		}
+		lastHole = hole;
         return hole;
     }
 
@@ -99,11 +103,11 @@ window.onload = function () {
 		hole.children[0].style.top = 0;
 		setTimeout(() => {
 		    hole.children[0].style.top = "100%";
-		}, time*50);
+		}, time*20);
 		if(timeUp!=true) {
 			setTimeout(() => {
 			    peep();
-			}, time*50);
+			}, time*20);
 		}
     }
 
